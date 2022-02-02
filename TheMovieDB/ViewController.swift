@@ -3,6 +3,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //Background and statusbar color
     func setGradientBackground() {
         let colorTop =  UIColor(red: 99.0/255.0, green: 212.0/255.0, blue: 246.0/255.0, alpha: 1.0).cgColor
         let colorBottom = UIColor(red: 48.0/255.0, green: 105.0/255.0, blue: 178.0/255.0, alpha: 1.0).cgColor
@@ -22,6 +23,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         // Do any additional setup after loading the view.
     }
     
@@ -30,6 +32,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
     }
 
+    //Login Button Action
     @IBAction func loginBtnAction(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -38,6 +41,5 @@ class ViewController: UIViewController {
         self.present(mainTabBarController, animated: true, completion: nil)
         
     }
-    
 }
 
