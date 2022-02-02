@@ -31,20 +31,24 @@ class DetailViewController: UIViewController {
         idWatchListArray = []
         
         
+        //Save movie id data for Favorities
         if (defaultsFavorities.array(forKey: "favoritiesId") != nil) {
             idFavoritiesArray = defaultsFavorities.array(forKey: "favoritiesId")  as? [Int] ?? [Int]()
         }
         
+        //Save movie id data for Watchlist
         if (defaultsWatchlist.array(forKey: "idWatchListArray") != nil) {
             idWatchListArray = defaultsWatchlist.array(forKey: "idWatchListArray")  as? [Int] ?? [Int]()
         }
         
+        //if data have, Fill movie id data to Favorities
         if (idFavoritiesArray.contains(movieId)) {
             if let image = UIImage(named: "activeheart.png") {
                 favoritiesBtn.setImage(image, for: .normal)
             }
         }
         
+        //if data have, Fill movie id data to Watchlist
         if idWatchListArray.contains(movieId) {
             if let image = UIImage(named: "activewatchlist.png") {
                 watchlistBtn.setImage(image, for: .normal)
@@ -56,6 +60,7 @@ class DetailViewController: UIViewController {
 
     }
     
+    //Watchlist Button Action (Save or Remove movie id data)
     @IBAction func detailWatchList(_ sender: Any) {
         if idWatchListArray.contains(movieId) {
             idWatchListArray.remove(at: idWatchListArray.firstIndex(where: {$0 == movieId})!)
@@ -75,6 +80,7 @@ class DetailViewController: UIViewController {
         }
     }
     
+    //Favorities Button Action (Save or Remove movie id data)
     @IBAction func detailFavorities(_ sender: Any) {
         if idFavoritiesArray.contains(where: {$0 == movieId}) {
             idFavoritiesArray.remove(at: idFavoritiesArray.firstIndex(where: {$0 == movieId})!)
@@ -93,6 +99,7 @@ class DetailViewController: UIViewController {
         }
     }
     
+    //Tabbar is hide
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true

@@ -8,6 +8,8 @@ class FavoritiesViewController: UIViewController, UITableViewDataSource, UITable
     var getFavoritiesTitle : [String] = []
     var getFavoritiesImg : [String] = []
     var runTimes : Bool = true
+    
+    //Get JSON From API and fill Favorities title and image
     var listOfMovies = [MoviesDetails]() {
         didSet {
             DispatchQueue.main.sync {
@@ -31,6 +33,7 @@ class FavoritiesViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         
+        //Run one time when start page
         if runTimes == true {
             idFavoritiesArray = []
             runTimes = false
@@ -54,6 +57,7 @@ class FavoritiesViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    //TableView
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -78,6 +82,7 @@ class FavoritiesViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
+    //Navigation and Status Bar Color
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let appearance = UINavigationBarAppearance()
@@ -92,6 +97,7 @@ class FavoritiesViewController: UIViewController, UITableViewDataSource, UITable
         statusBar.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
         UIApplication.shared.keyWindow?.addSubview(statusBar)
         
+        //reload tableview when page open everytime
         if runTimes == false {
             idFavoritiesArray = []
             getFavoritiesImg = []
@@ -117,6 +123,7 @@ class FavoritiesViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    //Back Button Action
     @IBAction func backFromFavorities(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

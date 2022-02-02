@@ -29,6 +29,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         overrideUserInterfaceStyle = .light
         tableView.keyboardDismissMode = .onDrag
         
+        //Send Request to API
         let moviesRequset = MoviesRequest()
         moviesRequset.getMovies{[weak self] result in
             switch result {
@@ -42,6 +43,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
     }
 
+    //TableView
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -76,7 +78,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         
     }
     
-    //Mark: SearchBar
+    //SearchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = []
         
@@ -92,6 +94,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         self.tableView.reloadData()
     }
     
+    //Navigation and Status Bar Color
     override func viewWillAppear(_ animated: Bool) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -109,6 +112,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewWillAppear(animated)
     }
     
+    //Back Button Action
     @IBAction func backFromSearch(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -116,6 +120,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
 
 }
 
+//Keyboard Dismiss
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))

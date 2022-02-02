@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  TheMovieDB
-//
-//  Created by Emre OLGUN on 27.01.2022.
-//
 
 import UIKit
 

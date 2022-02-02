@@ -9,6 +9,8 @@ class WatchlistViewController: UIViewController, UITableViewDataSource, UITableV
     var getWatchlistTitle : [String] = []
     var getWatchlistImg : [String] = []
     var runTimes : Bool = true
+    
+    //Get JSON From API and fill Watchlist title and image
     var listOfMovies = [MoviesDetails]() {
         didSet {
             DispatchQueue.main.sync {
@@ -32,6 +34,7 @@ class WatchlistViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         
+        //Run one time when start page
         if runTimes == true {
             idWatchListArray = []
             runTimes = false
@@ -55,6 +58,7 @@ class WatchlistViewController: UIViewController, UITableViewDataSource, UITableV
        
     }
     
+    //TableView
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -79,6 +83,7 @@ class WatchlistViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
+    //Navigation and Status Bar Color
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let appearance = UINavigationBarAppearance()
@@ -93,7 +98,7 @@ class WatchlistViewController: UIViewController, UITableViewDataSource, UITableV
         statusBar.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
         UIApplication.shared.keyWindow?.addSubview(statusBar)
         
-        //reload tableview
+        //reload tableview when page open everytime
         if runTimes == false {
             idWatchListArray = []
             getWatchlistImg = []
@@ -119,6 +124,7 @@ class WatchlistViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    //Back Button Action
     @IBAction func backFromWatchlist(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

@@ -1,12 +1,7 @@
-//
-//  FavoritiesTableViewCell.swift
-//  TheMovieDB
-//
-//  Created by Emre OLGUN on 28.01.2022.
-//
 
 import UIKit
 
+//Favorities TableView Cell (Title and Image)
 class FavoritiesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleCell: UILabel!
@@ -18,8 +13,6 @@ class FavoritiesTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
